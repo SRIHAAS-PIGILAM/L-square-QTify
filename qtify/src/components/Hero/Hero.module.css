@@ -1,0 +1,29 @@
+.hero {
+  background-color: var(--color-black);
+  color: var(--color-white);
+
+  height: 270px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px; /* reduced from 120 */
+}
+
+.text {
+  text-align: center;
+}
+
+.text h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.image {
+  width: 212px;
+  height: 212px;
+  object-fit: contain;
+}
