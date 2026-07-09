@@ -1,11 +1,29 @@
 .wrapper {
   position: relative;
+  width: 100%;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 43%;
+  transform: translateY(-50%);
+  z-index: 20;
+}
+
+.prev {
+  left: 3px;
+}
+
+.next {
+  right: 3px;
 }
 
 :global(.swiper) {
-  width: 1239px;
+  width: 100%;
+  overflow: hidden;
 }
 
 :global(.swiper-slide) {
-  width: 159px !important;
+  height: auto;
 }

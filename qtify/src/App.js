@@ -8,23 +8,29 @@ import Section from "./components/Section/Section";
 function App() {
   const [topAlbums, setTopAlbums] = useState([]);
   const [newAlbums, setNewAlbums] = useState([]);
+  const [songs, setSongs] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [topRes, newRes] = await Promise.all([
-          axios.get(
-            "https://qtify-backend.labs.crio.do/albums/top"
-          ),
-          axios.get(
-            "https://qtify-backend.labs.crio.do/albums/new"
-          ),
-        ]);
+        const [topRes, newRes, songsRes] =
+          await Promise.all([
+            axios.get(
+              "https://qtify-backend.labs.crio.do/albums/top"
+            ),
+            axios.get(
+              "https://qtify-backend.labs.crio.do/albums/new"
+            ),
+            axios.get(
+              "https://qtify-backend.labs.crio.do/songs"
+            ),
+          ]);
 
         setTopAlbums(topRes.data);
         setNewAlbums(newRes.data);
-      } catch (error) {
-        console.log(error);
+        setSongs(songsRes.data);
+      } catch (err) {
+        console.log(err);
       }
     };
 
@@ -32,21 +38,16 @@ function App() {
   }, []);
 
   return (
-    <div
-      style={{
-        backgroundColor: "#121212",
-        minHeight: "100vh",
-      }}
-    >
+    <>
+      <Navbar />
+      <Hero />
+
       <div
         style={{
-          maxWidth: "1440px",
-          margin: "0 auto",
+          backgroundColor: "#121212",
+          minHeight: "100vh",
         }}
       >
-        <Navbar />
-        <Hero />
-
         <Section
           title="Top Albums"
           data={topAlbums}
@@ -56,8 +57,13 @@ function App() {
           title="New Albums"
           data={newAlbums}
         />
+
+        <Section
+          title="Songs"
+          data={songs}
+        />
       </div>
-    </div>
+    </>
   );
 }
 
