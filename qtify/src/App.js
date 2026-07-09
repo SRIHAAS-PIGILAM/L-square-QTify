@@ -8,20 +8,17 @@ import Section from "./components/Section/Section";
 function App() {
   const [topAlbums, setTopAlbums] = useState([]);
   const [newAlbums, setNewAlbums] = useState([]);
-  const [songs, setSongs] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [topRes, newRes, songsRes] = await Promise.all([
+        const [topRes, newRes] = await Promise.all([
           axios.get("https://qtify-backend.labs.crio.do/albums/top"),
           axios.get("https://qtify-backend.labs.crio.do/albums/new"),
-          axios.get("https://qtify-backend.labs.crio.do/songs"),
         ]);
 
         setTopAlbums(topRes.data);
         setNewAlbums(newRes.data);
-        setSongs(songsRes.data);
       } catch (err) {
         console.log(err);
       }
