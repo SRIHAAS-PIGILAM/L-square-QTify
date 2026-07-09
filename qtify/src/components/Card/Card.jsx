@@ -5,6 +5,7 @@ function Card({
   image = "https://picsum.photos/159/205",
   follows = 100,
   title = "New English Songs",
+  type = "album",
 }) {
   return (
     <div className={styles.cardWrapper}>
@@ -17,7 +18,9 @@ function Card({
 
         <div className={styles.bottomSection}>
           <Chip
-            label={`${follows} Follows`}
+            label={`${follows} ${
+              type === "song" ? "Likes" : "Follows"
+            }`}
             size="small"
             className={styles.chip}
           />

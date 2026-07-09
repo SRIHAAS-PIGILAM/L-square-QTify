@@ -1,0 +1,27 @@
+.button {
+  position: absolute;
+
+  width: 32px;
+  height: 32px;
+
+  left: -16px;
+  top: 86px;
+
+  border: none;
+  border-radius: 50%;
+
+  background-color: #34c94b;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 10;
+
+  cursor: pointer;
+}
+
+.button svg {
+  color: white;
+  font-size: 20px;
+}

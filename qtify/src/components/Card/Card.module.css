@@ -1,3 +1,87 @@
+/* .cardWrapper {
+  width: 159px;
+  min-width: 159px;
+  max-width: 159px;
+  height: 232px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  width: 159px;
+  height: 205px;
+
+  background-color: var(--color-white);
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  transition: transform 0.2s ease;
+
+  flex-shrink: 0;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.image {
+  width: 159px;
+  height: 170px;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+.bottomSection {
+  width: 159px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 8px;
+
+  box-sizing: border-box;
+}
+
+.chip {
+  background-color: var(--color-black) !important;
+  color: var(--color-white) !important;
+
+  width: 71px;
+  height: 23px !important;
+
+  border-radius: 11.5px !important;
+
+  font-size: 10px !important;
+  font-weight: 600 !important;
+}
+
+.chip span {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.title {
+  width: 159px;
+  height: 21px;
+
+  margin-top: 6px;
+
+  color: var(--color-white);
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} */
+
 .cardWrapper {
   width: 100%;
 }
@@ -19,8 +103,7 @@
 
 .image {
   width: 100%;
-
-  aspect-ratio: 159 / 205;
+  height: 170px;
 
   object-fit: cover;
 
@@ -29,7 +112,7 @@
 
 .bottomSection {
   width: 100%;
-  height: 23px;
+  height: 35px;
 
   display: flex;
   align-items: center;
@@ -43,15 +126,17 @@
   background-color: var(--color-black) !important;
   color: var(--color-white) !important;
 
-  height: 18px !important;
+  height: 23px !important;
+
+  border-radius: 11.5px !important;
 
   font-size: 10px !important;
   font-weight: 600 !important;
 }
 
 .chip span {
-  padding-left: 8px !important;
-  padding-right: 8px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
 
 .title {
@@ -60,9 +145,12 @@
   color: var(--color-white);
 
   font-size: 16px;
-  line-height: 1.35;
+  font-weight: 400;
+  line-height: 21px;
 
-  word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 768px) {

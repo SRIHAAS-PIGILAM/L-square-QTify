@@ -1,0 +1,11 @@
+.wrapper {
+  position: relative;
+}
+
+:global(.swiper) {
+  width: 1239px;
+}
+
+:global(.swiper-slide) {
+  width: 159px !important;
+}
