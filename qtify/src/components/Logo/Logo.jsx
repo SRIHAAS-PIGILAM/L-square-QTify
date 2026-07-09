@@ -8,8 +8,8 @@ export default function Logo() {
       alt="logo"
       width={67}
       style={{
-        display: "block",
-        marginLeft: "-18px"
+        marginTop: "20px",
+        marginBottom: "20px"
       }}
     />
   );
