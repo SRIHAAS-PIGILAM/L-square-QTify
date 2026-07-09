@@ -1,32 +1,24 @@
-import { useState } from "react";
 import styles from "./Section.module.css";
 import Card from "../Card/Card";
 
-function Section({ title, data, collapsed }) {
-  const [showAll, setShowAll] = useState(!collapsed);
-
-  const displayedData = showAll ? data : data.slice(0, 7);
-
+function Section({ title, data, buttonText }) {
   return (
     <div className={styles.section}>
       <div className={styles.header}>
         <h2>{title}</h2>
 
-        <button
-          className={styles.button}
-          onClick={() => setShowAll(!showAll)}
-        >
-          {showAll ? "Collapse" : "Show all"}
+        <button className={styles.button}>
+          {buttonText}
         </button>
       </div>
 
       <div className={styles.grid}>
-        {displayedData.map((album) => (
+        {data.map((item) => (
           <Card
-            key={album.id}
-            image={album.image}
-            follows={album.follows}
-            title={album.title}
+            key={item.id}
+            image={item.image}
+            follows={item.follows}
+            title={item.title}
           />
         ))}
       </div>
