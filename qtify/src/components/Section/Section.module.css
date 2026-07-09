@@ -230,6 +230,8 @@
   }
 } */
 
+/* version latest*/
+
 .section {
   width: 100%;
   box-sizing: border-box;
@@ -325,4 +327,29 @@
     grid-template-columns: repeat(2, 159px);
     justify-content: center;
   }
+}
+
+.tabsContainer {
+  margin-bottom: 24px;
+}
+
+.tab {
+  color: white !important;
+  text-transform: none !important;
+
+  font-size: 16px !important;
+  font-weight: 600 !important;
+
+  min-width: auto !important;
+
+  padding-left: 0 !important;
+  padding-right: 32px !important;
+}
+
+:global(.MuiTabs-indicator) {
+  background-color: #34c94b !important;
+}
+
+:global(.Mui-selected) {
+  color: #34c94b !important;
 }

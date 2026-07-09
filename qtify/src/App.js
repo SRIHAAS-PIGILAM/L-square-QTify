@@ -9,26 +9,35 @@ function App() {
   const [topAlbums, setTopAlbums] = useState([]);
   const [newAlbums, setNewAlbums] = useState([]);
   const [songs, setSongs] = useState([]);
+  const [genres, setGenres] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [topRes, newRes, songsRes] =
-          await Promise.all([
-            axios.get(
-              "https://qtify-backend.labs.crio.do/albums/top"
-            ),
-            axios.get(
-              "https://qtify-backend.labs.crio.do/albums/new"
-            ),
-            axios.get(
-              "https://qtify-backend.labs.crio.do/songs"
-            ),
-          ]);
+        const [
+          topRes,
+          newRes,
+          songsRes,
+          genresRes,
+        ] = await Promise.all([
+          axios.get(
+            "https://qtify-backend.labs.crio.do/albums/top"
+          ),
+          axios.get(
+            "https://qtify-backend.labs.crio.do/albums/new"
+          ),
+          axios.get(
+            "https://qtify-backend.labs.crio.do/songs"
+          ),
+          axios.get(
+            "https://qtify-backend.labs.crio.do/genres"
+          ),
+        ]);
 
         setTopAlbums(topRes.data);
         setNewAlbums(newRes.data);
         setSongs(songsRes.data);
+        setGenres(genresRes.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -61,6 +70,7 @@ function App() {
         <Section
           title="Songs"
           data={songs}
+          genres={genres}
         />
       </div>
     </>
