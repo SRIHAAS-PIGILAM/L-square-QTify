@@ -7,21 +7,24 @@ import Section from "./components/Section/Section";
 
 function App() {
   const [topAlbums, setTopAlbums] = useState([]);
+  const [newAlbums, setNewAlbums] = useState([]);
 
   useEffect(() => {
-    const fetchTopAlbums = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://qtify-backend.labs.crio.do/albums/top"
-        );
+        const [topResponse, newResponse] = await Promise.all([
+          axios.get("https://qtify-backend.labs.crio.do/albums/top"),
+          axios.get("https://qtify-backend.labs.crio.do/albums/new"),
+        ]);
 
-        setTopAlbums(response.data);
+        setTopAlbums(topResponse.data);
+        setNewAlbums(newResponse.data);
       } catch (error) {
         console.log(error);
       }
     };
 
-    fetchTopAlbums();
+    fetchData();
   }, []);
 
   return (
@@ -38,6 +41,13 @@ function App() {
         <Section
           title="Top Albums"
           data={topAlbums}
+          collapsed={false}
+        />
+
+        <Section
+          title="New Albums"
+          data={newAlbums}
+          collapsed={true}
         />
       </div>
     </>
