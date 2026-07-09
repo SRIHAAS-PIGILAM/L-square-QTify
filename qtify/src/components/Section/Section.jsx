@@ -2,29 +2,34 @@ import { useState } from "react";
 import styles from "./Section.module.css";
 import Card from "../Card/Card";
 
-function Section({ title, data, buttonText }) {
-  const [showAll, setShowAll] = useState(
-    title === "Top Albums"
-  );
+function Section({ title, data }) {
+  const initiallyExpanded = title === "Top Albums";
+
+  const [showAll, setShowAll] = useState(initiallyExpanded);
 
   const displayedData = showAll ? data : data.slice(0, 7);
 
   const currentButtonText = showAll ? "Collapse" : "Show all";
 
+  const gridClass =
+    showAll && displayedData.length > 7
+      ? `${styles.grid} ${styles.expandedGrid}`
+      : styles.grid;
+
   return (
-    <div className={styles.section}>
+    <section className={styles.section}>
       <div className={styles.header}>
         <h2>{title}</h2>
 
         <button
           className={styles.button}
-          onClick={() => setShowAll(!showAll)}
+          onClick={() => setShowAll((prev) => !prev)}
         >
           {currentButtonText}
         </button>
       </div>
 
-      <div className={styles.grid}>
+      <div className={gridClass}>
         {displayedData.map((item) => (
           <Card
             key={item.id}
@@ -34,7 +39,7 @@ function Section({ title, data, buttonText }) {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
